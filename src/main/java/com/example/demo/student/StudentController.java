@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
-
     @Autowired
     private final StudentService studentService;
 
