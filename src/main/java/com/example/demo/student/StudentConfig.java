@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
+import static java.time.Month.AUGUST;
 import static java.time.Month.JANUARY;
 
 @Configuration
@@ -18,13 +20,24 @@ public class StudentConfig {
     @Bean
     CommandLineRunner commandLineRunner(StudentRepository repository){
         return args ->{
-            new Student(
-                    1L, "Mirriam",
-                    "mirriamJamal@gmail.com",
+            Student mariam  = new Student(
+                    "Mariam",
+                    "mariamJamal@gmail.com",
                     LocalDate.of(2000, JANUARY, 5),
-                    22
+                    23
             );
 
+            Student alex  = new Student(
+                    "Alex",
+                    "alex.Jamal@gmail.com",
+                    LocalDate.of(2004, AUGUST, 31),
+                    18
+
+            );
+
+            repository.saveAll(
+                    List.of(mariam, alex)
+            );
         };
     }
 }
